@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ground.tres" type="TileSet" id=2]
+[ext_resource path="res://Coin.tscn" type="PackedScene" id=3]
+[ext_resource path="res://OutOfBounds.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemy2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemy3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scene.gd" type="Script" id=8]
+[ext_resource path="res://Level4.tscn" type="PackedScene" id=9]
+
+[node name="Level3" type="Node2D"]
+script = ExtResource( 8 )
+scene = ExtResource( 9 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 128, 128 )
+collision_layer = 7
+collision_mask = 7
+format = 1
+tile_data = PoolIntArray( -917489, 1, 0, -917488, 8, 0, -917487, 8, 0, -917486, 8, 0, -917485, 8, 0, -917484, 8, 0, -917483, 8, 0, -917482, 8, 0, -917481, 8, 0, -917480, 8, 0, -917479, 2, 0, -786424, 0, 0, -786420, 0, 0, -786403, 1, 0, -786402, 8, 0, -786401, 8, 0, -786400, 8, 0, -786399, 8, 0, -786398, 2, 0, -655354, 0, 0, -589805, 1, 0, -589804, 8, 0, -589803, 8, 0, -589802, 2, 0, -589800, 1, 0, -589799, 8, 0, -589798, 8, 0, -589797, 2, 0, -524284, 0, 0, -524254, 1, 0, -524253, 8, 0, -524252, 8, 0, -524251, 8, 0, -524250, 8, 0, -524249, 8, 0, -524248, 8, 0, -524247, 8, 0, -524246, 8, 0, -524245, 2, 0, -458724, 1, 0, -458723, 2, 0, -393210, 1, 0, -393209, 8, 0, -393208, 8, 0, -393207, 8, 0, -393206, 8, 0, -393205, 8, 0, -393204, 8, 0, -393203, 8, 0, -393202, 2, 0, -327655, 1, 0, -327654, 10, 0, -327653, 10, 0, -327652, 10, 0, -327651, 10, 0, -327650, 2, 0, -196585, 0, 0, -65528, 1, 0, -65527, 10, 0, -65526, 10, 0, -65525, 10, 0, -65524, 10, 0, -65523, 10, 0, -65522, 10, 0, -65521, 10, 0, -65520, 2, 0, -65516, 1, 0, -65515, 2, 0, 0, 11, 0, 1, 10, 0, 2, 10, 0, 3, 10, 0, 4, 10, 0, 5, 9, 0, 65536, 8, 0, 65537, 7, 0, 65538, 7, 0, 65539, 7, 0, 65540, 7, 0, 65541, 6, 0, 131072, 3, 0, 131073, 5, 0, 131074, 5, 0, 131075, 5, 0, 131076, 5, 0, 131077, 4, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 328, -142 )
+
+[node name="OutOfBounds" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1616, 736 )
+scale = Vector2( 2.452, 1 )
+
+[node name="Coin" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1320, -848 )
+
+[node name="Coin2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2640, -1880 )
+
+[node name="Coin3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1352, -1768 )
+
+[node name="Coin4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 5000, -1128 )
+
+[node name="Coin5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3720, -704 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1761.38, -212.606 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 2608, -1872 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1368, -864 )
+
+[node name="Enemy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 4993.38, -1172.61 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 7 )]
+position = Vector2( 4097.38, -1636.61 )

@@ -1,0 +1,243 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://enemy_global.gd" type="Script" id=1]
+[ext_resource path="res://enemy_health.gd" type="Script" id=2]
+[ext_resource path="res://enemy_attack.gd" type="Script" id=3]
+[ext_resource path="res://enemy_movement.gd" type="Script" id=4]
+[ext_resource path="res://health_bar_theme.tres" type="Theme" id=5]
+[ext_resource path="res://small_enemy.png" type="Texture" id=6]
+[ext_resource path="res://sword3.mp3" type="AudioStream" id=7]
+[ext_resource path="res://growl.mp3" type="AudioStream" id=8]
+[ext_resource path="res://dying.mp3" type="AudioStream" id=9]
+
+[sub_resource type="Animation" id=13]
+resource_name = "Attack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 10, 17, 24, 31, 38, 45 ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Dying"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 13, 20, 27, 34 ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "Falling"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 12 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Idle"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 7, 14, 22, 28 ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "Jumping"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 9, 16, 23 ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "Running"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 8, 15, 22, 29, 36, 43 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 6.85714
+height = 7.65369
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 98.8572, 39.8572 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 31.2857, 4.77057 )
+
+[node name="Enemy2" type="KinematicBody2D"]
+position = Vector2( -230.616, -252.606 )
+scale = Vector2( 3.5, 3.5 )
+z_index = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 1 )
+timeout = 0.0
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -7.62939e-06 )
+texture = ExtResource( 6 )
+hframes = 7
+vframes = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Attack = SubResource( 13 )
+anims/Dying = SubResource( 14 )
+anims/Falling = SubResource( 15 )
+anims/Idle = SubResource( 16 )
+anims/Jumping = SubResource( 17 )
+anims/RESET = SubResource( 18 )
+anims/Running = SubResource( 19 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Health" type="ProgressBar" parent="."]
+margin_left = -9.14286
+margin_top = -16.5714
+margin_right = 15.8571
+margin_bottom = -12.5714
+theme = ExtResource( 5 )
+value = 100.0
+rounded = true
+percent_visible = false
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+deathPoints = 30
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2.85714, 2.28571 )
+shape = SubResource( 9 )
+
+[node name="Movement" type="Area2D" parent="."]
+position = Vector2( -2.12029, 7.42858 )
+script = ExtResource( 4 )
+ACCELERATION = 60
+JUMPFORCE = 900
+
+[node name="Wall" type="RayCast2D" parent="Movement"]
+position = Vector2( 4.505, -8.985 )
+enabled = true
+cast_to = Vector2( 9.908, 0 )
+collision_mask = 6
+
+[node name="Wall2" type="RayCast2D" parent="Movement"]
+position = Vector2( 3.066, -8.914 )
+enabled = true
+cast_to = Vector2( -21.106, 0 )
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Movement"]
+position = Vector2( 4.58201, -5.25543 )
+shape = SubResource( 10 )
+
+[node name="Ground" type="RayCast2D" parent="Movement"]
+position = Vector2( 13.21, -3.635 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 4
+
+[node name="GrowlAudio" type="AudioStreamPlayer" parent="Movement"]
+stream = ExtResource( 8 )
+
+[node name="Attack" type="Area2D" parent="."]
+position = Vector2( -2.12029, 6.57143 )
+script = ExtResource( 3 )
+damage = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2( 28.7249, -2.19916 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 11 )
+
+[node name="AttackAudio" type="AudioStreamPlayer" parent="Attack"]
+stream = ExtResource( 7 )
+
+[node name="DyingAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[connection signal="body_entered" from="Movement" to="Movement" method="_on_Movement_body_entered"]
+[connection signal="body_exited" from="Movement" to="Movement" method="_on_Movement_body_exited"]
+[connection signal="body_entered" from="Attack" to="Attack" method="_on_Attack_body_entered"]
+[connection signal="body_exited" from="Attack" to="Attack" method="_on_Attack_body_exited"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/growl.mp3-2d2153676fe7cfafea1c0f8e683d7981.mp3str"
+
+[deps]
+
+source_file="res://growl.mp3"
+dest_files=[ "res://.import/growl.mp3-2d2153676fe7cfafea1c0f8e683d7981.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

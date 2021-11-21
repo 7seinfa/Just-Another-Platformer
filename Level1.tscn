@@ -1,0 +1,150 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scene.gd" type="Script" id=1]
+[ext_resource path="res://Enemy3.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Coin.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://OutOfBounds.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ground.tres" type="TileSet" id=6]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://PressStart2P-vaV7.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 56
+outline_color = Color( 0, 0.94902, 0.0588235, 1 )
+font_data = SubResource( 1 )
+
+[node name="Level1" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 6 )
+cell_size = Vector2( 128, 128 )
+cell_custom_transform = Transform2D( 128, 0, 0, 128, 0, 0 )
+collision_layer = 7
+collision_mask = 7
+format = 1
+tile_data = PoolIntArray( -458728, 1, 0, -458727, 10, 0, -458726, 10, 0, -458725, 10, 0, -458724, 2, 0, -458703, 10, 0, -458702, 10, 0, -458701, 10, 0, -458700, 10, 0, -458684, 7, 0, -458683, 10, 0, -458682, 10, 0, -458681, 7, 0, -458680, 7, 0, -393168, 10, 0, -393167, 7, 0, -393166, 10, 0, -393165, 10, 0, -393148, 10, 0, -393147, 10, 0, -393146, 10, 0, -393145, 10, 0, -393144, 10, 0, -327662, 1, 0, -327661, 10, 0, -327660, 10, 0, -327659, 10, 0, -327658, 2, 0, -327650, 1, 0, -327649, 10, 0, -327648, 10, 0, -327647, 10, 0, -327646, 2, 0, -327633, 10, 0, -327632, 7, 0, -327631, 5, 0, -327612, 7, 0, -327611, 10, 0, -327610, 10, 0, -327609, 7, 0, -327608, 7, 0, -262131, 10, 0, -262130, 10, 0, -262129, 10, 0, -262107, 10, 0, -262106, 10, 0, -262105, 10, 0, -262104, 10, 0, -262100, 10, 0, -262099, 10, 0, -262098, 10, 0, -262097, 7, 0, -262096, 5, 0, -262095, 5, 0, -262090, 1, 0, -262089, 10, 0, -262088, 10, 0, -262087, 2, 0, -262075, 7, 0, -262074, 7, 0, -262073, 5, 0, -262072, 5, 0, -196596, 10, 0, -196595, 10, 0, -196594, 7, 0, -196593, 7, 0, -196592, 7, 0, -196572, 10, 0, -196571, 7, 0, -196570, 7, 0, -196569, 7, 0, -196568, 7, 0, -196564, 7, 0, -196563, 7, 0, -196562, 7, 0, -196561, 5, 0, -196560, 7, 0, -196559, 7, 0, -196538, 5, 0, -196537, 7, 0, -196536, 5, 0, -131061, 10, 0, -131060, 10, 0, -131059, 10, 0, -131058, 5, 0, -131057, 5, 0, -131056, 5, 0, -131055, 10, 0, -131037, 10, 0, -131036, 7, 0, -131035, 5, 0, -131034, 5, 0, -131033, 5, 0, -131032, 5, 0, -131028, 5, 0, -131027, 5, 0, -131010, 10, 0, -131009, 10, 0, -131008, 10, 0, -131007, 10, 0, -131001, 5, 0, -131000, 5, 0, -65526, 10, 0, -65525, 10, 0, -65524, 7, 0, -65523, 7, 0, -65522, 7, 0, -65521, 7, 0, -65520, 7, 0, -65519, 7, 0, -65518, 7, 0, -65502, 10, 0, -65501, 10, 0, -65500, 5, 0, -65499, 5, 0, -65498, 5, 0, -65497, 5, 0, -65496, 5, 0, -65492, 7, 0, -65491, 7, 0, -65475, 10, 0, -65474, 7, 0, -65473, 7, 0, -65472, 7, 0, -65471, 7, 0, -65470, 7, 0, -65465, 7, 0, -65464, 7, 0, 0, 11, 0, 1, 10, 0, 2, 10, 0, 3, 10, 0, 4, 10, 0, 5, 10, 0, 6, 10, 0, 7, 10, 0, 8, 10, 0, 9, 10, 0, 10, 7, 0, 11, 7, 0, 12, 5, 0, 13, 5, 0, 14, 5, 0, 15, 5, 0, 16, 5, 0, 17, 5, 0, 18, 5, 0, 19, 5, 0, 20, 10, 0, 21, 10, 0, 22, 10, 0, 23, 10, 0, 24, 10, 0, 25, 10, 0, 26, 10, 0, 27, 10, 0, 28, 10, 0, 29, 10, 0, 30, 10, 0, 31, 10, 0, 32, 10, 0, 33, 10, 0, 34, 10, 0, 35, 7, 0, 36, 7, 0, 37, 7, 0, 38, 7, 0, 39, 7, 0, 40, 7, 0, 44, 5, 0, 45, 5, 0, 46, 5, 0, 47, 5, 0, 48, 5, 0, 49, 5, 0, 50, 10, 0, 51, 10, 0, 52, 10, 0, 53, 10, 0, 58, 10, 0, 59, 10, 0, 60, 10, 0, 61, 7, 0, 62, 5, 0, 63, 5, 0, 64, 5, 0, 65, 10, 0, 66, 5, 0, 67, 5, 0, 71, 5, 0, 72, 5, 0, 65536, 8, 0, 65537, 7, 0, 65538, 7, 0, 65539, 7, 0, 65540, 7, 0, 65541, 7, 0, 65542, 7, 0, 65543, 7, 0, 65544, 7, 0, 65545, 7, 0, 65546, 5, 0, 65547, 5, 0, 65548, 7, 0, 65549, 7, 0, 65550, 7, 0, 65551, 7, 0, 65552, 7, 0, 65553, 7, 0, 65554, 7, 0, 65555, 7, 0, 65556, 7, 0, 65557, 7, 0, 65558, 7, 0, 65559, 7, 0, 65560, 7, 0, 65561, 7, 0, 65562, 7, 0, 65563, 7, 0, 65564, 7, 0, 65565, 7, 0, 65566, 7, 0, 65567, 7, 0, 65568, 7, 0, 65569, 7, 0, 65570, 7, 0, 65571, 5, 0, 65572, 5, 0, 65573, 5, 0, 65574, 5, 0, 65575, 5, 0, 65576, 5, 0, 65580, 7, 0, 65581, 7, 0, 65582, 7, 0, 65583, 7, 0, 65584, 7, 0, 65585, 7, 0, 65586, 7, 0, 65587, 7, 0, 65588, 7, 0, 65589, 7, 0, 65594, 7, 0, 65595, 7, 0, 65596, 7, 0, 65597, 5, 0, 65598, 7, 0, 65599, 7, 0, 65600, 7, 0, 65601, 7, 0, 65602, 7, 0, 65603, 7, 0, 65604, 7, 0, 65605, 7, 0, 65606, 7, 0, 65607, 7, 0, 65608, 7, 0, 131072, 3, 0, 131073, 5, 0, 131074, 5, 0, 131075, 5, 0, 131076, 5, 0, 131077, 5, 0, 131078, 5, 0, 131079, 5, 0, 131080, 5, 0, 131081, 5, 0, 131082, 5, 0, 131083, 5, 0, 131084, 5, 0, 131085, 5, 0, 131086, 5, 0, 131087, 5, 0, 131088, 5, 0, 131089, 5, 0, 131090, 5, 0, 131091, 5, 0, 131092, 5, 0, 131093, 5, 0, 131094, 5, 0, 131095, 5, 0, 131096, 5, 0, 131097, 5, 0, 131098, 5, 0, 131099, 5, 0, 131100, 5, 0, 131101, 5, 0, 131102, 5, 0, 131103, 5, 0, 131104, 5, 0, 131105, 5, 0, 131106, 5, 0, 131107, 5, 0, 131108, 5, 0, 131109, 5, 0, 131110, 5, 0, 131111, 5, 0, 131112, 5, 0, 131116, 5, 0, 131117, 5, 0, 131118, 5, 0, 131119, 5, 0, 131120, 5, 0, 131121, 5, 0, 131122, 5, 0, 131123, 5, 0, 131124, 5, 0, 131125, 5, 0, 131130, 5, 0, 131131, 5, 0, 131132, 5, 0, 131133, 5, 0, 131134, 5, 0, 131135, 5, 0, 131136, 5, 0, 131137, 5, 0, 131138, 5, 0, 131139, 5, 0, 131140, 5, 0, 131141, 5, 0, 131142, 5, 0, 131143, 5, 0, 131144, 5, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 72, -136 )
+
+[node name="Coin" parent="." instance=ExtResource( 3 )]
+position = Vector2( 4112, -104 )
+
+[node name="Coin2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3408, -984 )
+
+[node name="Coin3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 6008, -96 )
+
+[node name="Coin4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 8904, 32 )
+
+[node name="Coin5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1848, -592 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 48.0
+margin_top = -400.0
+margin_right = 1232.0
+margin_bottom = -263.0
+custom_colors/font_color = Color( 0.137255, 0.631373, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Move with WASD"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 1256.0
+margin_top = -896.0
+margin_right = 2440.0
+margin_bottom = -759.0
+rect_pivot_offset = Vector2( 648, 120 )
+custom_colors/font_color = Color( 0.807843, 0.662745, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "There are 5 coins
+in each level"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 2736.0
+margin_top = -504.0
+margin_right = 3920.0
+margin_bottom = -367.0
+rect_pivot_offset = Vector2( 648, 120 )
+custom_colors/font_color = Color( 0.717647, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Use the space bar
+to attack enemies"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 4224.0
+margin_top = -968.0
+margin_right = 5736.0
+margin_bottom = -831.0
+rect_pivot_offset = Vector2( 648, 120 )
+custom_colors/font_color = Color( 0, 0.211765, 0.717647, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "After killing an enemy, you
+gain mana to use magic"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 5888.0
+margin_top = -1288.0
+margin_right = 7176.0
+margin_bottom = -1151.0
+rect_pivot_offset = Vector2( 640, 72 )
+custom_colors/font_color = Color( 0, 0.717647, 0.717647, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Press Q to use your
+magic attack"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="."]
+margin_left = 7448.0
+margin_top = -832.0
+margin_right = 8736.0
+margin_bottom = -695.0
+rect_pivot_offset = Vector2( 640, 72 )
+custom_colors/font_color = Color( 0.823529, 0.639216, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Collect all coins
+to advance a level"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OutOfBounds" parent="." instance=ExtResource( 5 )]
+position = Vector2( 2176, 560 )
+scale = Vector2( 2, 1 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 3400, -112 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 6385.38, -84.606 )

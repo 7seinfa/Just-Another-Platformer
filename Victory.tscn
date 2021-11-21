@@ -1,0 +1,99 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://GameOver.gd" type="Script" id=1]
+[ext_resource path="res://Mexico_Loop.wav" type="AudioStream" id=2]
+[ext_resource path="res://ground.tres" type="TileSet" id=3]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://PressStart2P-vaV7.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 36
+font_data = SubResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -450.0
+margin_top = -60.0
+margin_right = 450.0
+margin_bottom = 60.0
+custom_constants/separation = 48
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RestartLevel" type="Button" parent="VBoxContainer"]
+margin_right = 900.0
+margin_bottom = 36.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 0.921569, 1, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.898039, 1, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0.882353, 0.0156863, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 5 )
+disabled = true
+text = "Congratulations, you win!"
+
+[node name="StartMenu" type="Button" parent="VBoxContainer"]
+margin_top = 84.0
+margin_right = 900.0
+margin_bottom = 120.0
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color_focus = Color( 0.921569, 1, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.898039, 1, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0.882353, 0.0156863, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
+text = "Start Menu"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 0, -48 )
+z_index = -2
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 128 )
+format = 1
+tile_data = PoolIntArray( 0, 11, 0, 1, 10, 0, 2, 10, 0, 3, 10, 0, 4, 10, 0, 5, 10, 0, 6, 10, 0, 7, 10, 0, 8, 10, 0, 9, 9, 0, 65536, 8, 0, 65537, 7, 0, 65538, 7, 0, 65539, 7, 0, 65540, 7, 0, 65541, 7, 0, 65542, 7, 0, 65543, 7, 0, 65544, 7, 0, 65545, 6, 0, 131072, 8, 0, 131073, 7, 0, 131074, 7, 0, 131075, 7, 0, 131076, 7, 0, 131077, 7, 0, 131078, 7, 0, 131079, 7, 0, 131080, 7, 0, 131081, 6, 0, 196608, 8, 0, 196609, 7, 0, 196610, 7, 0, 196611, 7, 0, 196612, 7, 0, 196613, 7, 0, 196614, 7, 0, 196615, 7, 0, 196616, 7, 0, 196617, 6, 0, 262144, 8, 0, 262145, 7, 0, 262146, 7, 0, 262147, 7, 0, 262148, 7, 0, 262149, 7, 0, 262150, 7, 0, 262151, 7, 0, 262152, 7, 0, 262153, 6, 0, 327680, 3, 0, 327681, 5, 0, 327682, 5, 0, 327683, 5, 0, 327684, 5, 0, 327685, 5, 0, 327686, 5, 0, 327687, 5, 0, 327688, 5, 0, 327689, 4, 0 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -7.866
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/RestartLevel" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartMenu" to="." method="_on_QuitButton_pressed"]

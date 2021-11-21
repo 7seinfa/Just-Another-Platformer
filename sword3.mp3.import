@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sword3.mp3-4be49be5a368bf677cd38bd77e990d6d.mp3str"
+
+[deps]
+
+source_file="res://sword3.mp3"
+dest_files=[ "res://.import/sword3.mp3-4be49be5a368bf677cd38bd77e990d6d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

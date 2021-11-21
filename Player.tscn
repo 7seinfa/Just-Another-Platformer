@@ -1,0 +1,380 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://player.png" type="Texture" id=1]
+[ext_resource path="res://player_movement.gd" type="Script" id=2]
+[ext_resource path="res://player_global.gd" type="Script" id=3]
+[ext_resource path="res://player_health.gd" type="Script" id=4]
+[ext_resource path="res://player_attack.gd" type="Script" id=5]
+[ext_resource path="res://health_bar_theme.tres" type="Theme" id=6]
+[ext_resource path="res://magic.png" type="Texture" id=7]
+[ext_resource path="res://sword2.mp3" type="AudioStream" id=8]
+[ext_resource path="res://magic1.mp3" type="AudioStream" id=9]
+[ext_resource path="res://jump.mp3" type="AudioStream" id=10]
+[ext_resource path="res://coin.wav" type="AudioStream" id=11]
+[ext_resource path="res://Mexico_Loop.wav" type="AudioStream" id=12]
+[ext_resource path="res://playerdeath.mp3" type="AudioStream" id=13]
+
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 7.41667
+height = 13.8333
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 7.41667, 10.4167 )
+
+[sub_resource type="DynamicFontData" id=17]
+font_path = "res://PressStart2P-vaV7.ttf"
+
+[sub_resource type="DynamicFont" id=18]
+size = 56
+font_data = SubResource( 17 )
+
+[sub_resource type="DynamicFontData" id=19]
+font_path = "res://PressStart2P-vaV7.ttf"
+
+[sub_resource type="DynamicFont" id=20]
+size = 56
+font_data = SubResource( 19 )
+
+[sub_resource type="Animation" id=11]
+resource_name = "Crouching"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 60, 61, 63, 64, 65, 66 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Dying"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 90, 91, 92, 93, 94 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Falling"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 25, 26, 27, 28, 29 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Jumping"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 20, 21, 22, 23, 24 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Magic"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 30, 31, 32, 33, 34, 35, 36, 37, 38 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Melee"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 41, 42, 43, 44, 45, 46, 47, 48, 49, 50 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Running"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14, 15 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=14]
+radius = 14.5
+height = 10.926
+
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Magic:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "magic1"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Magic:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 11.3771, 3.92643 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( -230.616, -252.606 )
+scale = Vector2( 6, 6 )
+z_index = 1
+collision_layer = 9
+collision_mask = 9
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 10
+vframes = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.0193329, 1.93433 )
+shape = SubResource( 12 )
+
+[node name="CrouchShape" type="CollisionShape2D" parent="."]
+position = Vector2( 1.186, 0.0176659 )
+shape = SubResource( 13 )
+disabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Health" type="ProgressBar" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 756.0
+margin_top = 675.0
+margin_right = 2.0
+theme = ExtResource( 6 )
+value = 100.0
+rounded = true
+percent_visible = false
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+margin_left = 1074.0
+margin_top = 621.0
+margin_right = 1275.0
+margin_bottom = 677.0
+custom_colors/font_color = Color( 0, 0.156863, 1, 1 )
+custom_fonts/font = SubResource( 18 )
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coin" type="Label" parent="CanvasLayer"]
+margin_left = 1162.0
+margin_top = 553.0
+margin_right = 1275.0
+margin_bottom = 626.0
+custom_colors/font_color = Color( 0.858824, 0.72549, 0, 1 )
+custom_fonts/font = SubResource( 20 )
+text = "0"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 2.28571, -4.57144 )
+current = true
+zoom = Vector2( 2, 2 )
+smoothing_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Crouching = SubResource( 11 )
+anims/Dying = SubResource( 3 )
+anims/Falling = SubResource( 4 )
+anims/Idle = SubResource( 5 )
+anims/Jumping = SubResource( 6 )
+anims/Magic = SubResource( 2 )
+anims/Melee = SubResource( 10 )
+anims/RESET = SubResource( 7 )
+anims/Running = SubResource( 8 )
+
+[node name="roof" type="RayCast2D" parent="."]
+show_behind_parent = true
+position = Vector2( 0.769333, 1.26767 )
+scale = Vector2( 0.166667, 0.166667 )
+enabled = true
+cast_to = Vector2( 0, -84.715 )
+collision_mask = 6
+
+[node name="Movement" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="JumpAudio" type="AudioStreamPlayer" parent="Movement"]
+stream = ExtResource( 10 )
+
+[node name="Attack" type="Area2D" parent="."]
+position = Vector2( -2.12029, 6.57143 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 5 )
+
+[node name="Magic" type="Sprite" parent="Attack"]
+visible = false
+position = Vector2( 59.287, -4.40476 )
+texture = ExtResource( 7 )
+hframes = 8
+
+[node name="Area2D_magic" type="Area2D" parent="Attack/Magic"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack/Magic/Area2D_magic"]
+position = Vector2( -2.23067, -0.399002 )
+shape = SubResource( 14 )
+
+[node name="MagicAnimPlayer" type="AnimationPlayer" parent="Attack"]
+anims/RESET = SubResource( 15 )
+anims/magic1 = SubResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2( 8.86772, -6.11257 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 9 )
+
+[node name="MeleeAttackAudio" type="AudioStreamPlayer" parent="Attack"]
+stream = ExtResource( 8 )
+
+[node name="Magic1AttackAudio" type="AudioStreamPlayer" parent="Attack"]
+stream = ExtResource( 9 )
+
+[node name="DyingAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="CoinAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -7.866
+autoplay = true
+
+[connection signal="body_entered" from="Attack" to="Attack" method="_on_Attack_body_entered"]
+[connection signal="body_exited" from="Attack" to="Attack" method="_on_Attack_body_exited"]
+[connection signal="body_entered" from="Attack/Magic/Area2D_magic" to="Attack" method="_on_Area2D_magic_body_entered"]
+[connection signal="body_exited" from="Attack/Magic/Area2D_magic" to="Attack" method="_on_Area2D_magic_body_exited"]

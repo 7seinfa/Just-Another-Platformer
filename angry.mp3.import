@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/angry.mp3-1b40d11f4330d95fe9b0b8cd1e54a891.mp3str"
+
+[deps]
+
+source_file="res://angry.mp3"
+dest_files=[ "res://.import/angry.mp3-1b40d11f4330d95fe9b0b8cd1e54a891.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
